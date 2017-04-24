@@ -37,7 +37,7 @@ CREATE TABLE `01-staff` (
 
 LOCK TABLES `01-staff` WRITE;
 /*!40000 ALTER TABLE `01-staff` DISABLE KEYS */;
-INSERT INTO `01-staff` VALUES (1215121,'Lê Thị Thúy An',11000000,'Điều Dưỡng'),(1315215,'Trần Thúy Hiền',9000000,'Hộ Lý'),(1425156,'Nguyễn Thị Xuân',12000000,'Bác Sỹ'),(1510901,'Văn Minh Hào',15000000,'Bác Sỹ'),(1512591,'Nguyễn Thành Phương',16000000,'Bác Sỹ'),(1513056,'Nguyễn Văn Thành',10000000,'Nhân Viên Hành Chính'),(1513057,'Nguyễn Lê Nhất Thành',16000000,'Bác Sỹ'),(1513919,'Hoàng Lê Chánh Tú',10000000,'Nhân Viên Hành Chính'),(1514145,'Nguyễn Công Phượng',19650000,'Bác Sỹ'),(1514444,'Nguyễn Văn Toàn',10000000,'Nhân Viên Hành Chính'),(1516161,'Lương Xuân Trường',8500000,'Hộ Lý'),(1526254,'Tạ Thị Phương Thảo',12000000,'Điều Dưỡng'),(1615215,'Hoàng Văn Trường',17000000,'Bác Sỹ');
+INSERT INTO `01-staff` VALUES (1215121,'Lê Thị Thúy An',11000000,'Điều Dưỡng'),(1288681,'Trần Nhật Tú',19020000,'Bác Sỹ'),(1297719,'Lê Quốc Linh',18980000,'Bác Sỹ'),(1303697,'Trần Trung Linh',19400000,'Bác Sỹ'),(1315215,'Trần Thúy Hiền',9000000,'Hộ Lý'),(1335580,'Hồ Nhật Trình',18390000,'Bác Sỹ'),(1425156,'Nguyễn Thị Xuân',12000000,'Bác Sỹ'),(1492484,'Đặng Quốc Kỷ',18130000,'Bác Sỹ'),(1510901,'Văn Minh Hào',15000000,'Bác Sỹ'),(1512591,'Nguyễn Thành Phương',16000000,'Bác Sỹ'),(1513056,'Nguyễn Văn Thành',10000000,'Nhân Viên Hành Chính'),(1513057,'Nguyễn Lê Nhất Thành',16000000,'Bác Sỹ'),(1513919,'Hoàng Lê Chánh Tú',10000000,'Nhân Viên Hành Chính'),(1514145,'Nguyễn Công Phượng',19650000,'Bác Sỹ'),(1514444,'Nguyễn Văn Toàn',10000000,'Nhân Viên Hành Chính'),(1516161,'Lương Xuân Trường',8500000,'Hộ Lý'),(1526254,'Tạ Thị Phương Thảo',12000000,'Điều Dưỡng'),(1549485,'Nguyễn Đức Phương',15160000,'Bác Sỹ'),(1615215,'Hoàng Văn Trường',17000000,'Bác Sỹ'),(1714364,'Hoàng Trung Hải',18720000,'Bác Sỹ'),(1906280,'Trần Thành Tú',17770000,'Bác Sỹ'),(1941792,'Hoàng Nhật Hải',17480000,'Bác Sỹ'),(1960511,'Hồ Quốc Bảo',18330000,'Bác Sỹ');
 /*!40000 ALTER TABLE `01-staff` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +87,7 @@ CREATE TABLE `03-doctor` (
 
 LOCK TABLES `03-doctor` WRITE;
 /*!40000 ALTER TABLE `03-doctor` DISABLE KEYS */;
-INSERT INTO `03-doctor` VALUES (1425156,'Bác Sỹ Điều Trị'),(1510901,'Bác Sỹ Phẫu Thuật'),(1512591,'Bác Sỹ Phẫu Thuật'),(1513057,'Bác Sỹ Phẫu Thuật'),(1514145,'Bác Sỹ Điều Trị'),(1615215,'Bác Sỹ Điều Trị');
+INSERT INTO `03-doctor` VALUES (1288681,'Bác Sỹ Phẫu Thuật'),(1297719,'Bác Sỹ Phẫu Thuật'),(1303697,'Bác Sỹ Phẫu Thuật'),(1335580,'Bác Sỹ Điều Trị'),(1425156,'Bác Sỹ Điều Trị'),(1492484,'Bác Sỹ Điều Trị'),(1510901,'Bác Sỹ Phẫu Thuật'),(1512591,'Bác Sỹ Phẫu Thuật'),(1513057,'Bác Sỹ Phẫu Thuật'),(1514145,'Bác Sỹ Điều Trị'),(1549485,'Bác Sỹ Phẫu Thuật'),(1615215,'Bác Sỹ Điều Trị'),(1714364,'Bác Sỹ Điều Trị'),(1906280,'Bác Sỹ Điều Trị'),(1941792,'Bác Sỹ Điều Trị'),(1960511,'Bác Sỹ Phẫu Thuật');
 /*!40000 ALTER TABLE `03-doctor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -793,4 +793,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-25  1:00:45
+-- Dump completed on 2017-04-25  2:49:15
