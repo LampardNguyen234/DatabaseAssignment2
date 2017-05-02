@@ -1,0 +1,37 @@
+﻿Trigger:
+	Cập nhật số lượng dụng cụ: I.1
+	Tính tiền hoa hồng cho Bác Sỹ: I.2
+	Check xem phòng phẫu thuật có còn trống không: I.3
+	Check số điện thoại chính xác(optional)
+	Check Email (optional)
+Procedure/Function:
+	3 yêu cầu trong phần 2 trong đề
+Ngoài ra:
+	Tìm kiếm thông tin bệnh nhân
+		Input: Tên or Số điện thoại or ID bệnh nhân
+		Output: ID bệnh nhân, Tên bệnh nhân, số điện thoại, ID các đợt điều trị, số thứ tự lần khám bệnh 
+(check xem bệnh nhân là ngoại trú hay nội trú để lấy thông tin từ bảng phù hợp)
+	Tìm kiếm thông tin đợt điều trị
+		Input: ID đợt điều trị, ID bệnh nhân
+		Output: Tất cả thông tin từ bảng đợt điều trị
+	Tìm kiếm thông tin lần khám bệnh
+		Input: Số thứ tự, ID bệnh nhân
+		Output: Tất cả thông tin từ bảng lần khám bệnh
+	Thêm một bệnh nhân mới
+		Input: các field trong table bệnh nhân
+		Output: true nếu insert thành công, false nếu ngược lại
+	Hiển thị danh sách thuốc mà một điều dưỡng phải đi phát cho tất cả các bệnh nhân khi họ trực tại một phòng:
+		Input: ID điều dưỡng, ID phòng, ID ca trực
+		Output: ID điều dưỡng, ID bệnh nhân, ID phòng(khu/phòng), ID thuốc, Tên thuốc, Số lượng(nếu có)
+	Liệt kê số thuốc mà bệnh nhân đã sử dụng
+		Input: ID bệnh nhân
+		Output: ID đợt điều trị, ID thuốc, số lượng mà bệnh nhân đã sử dụng
+	Các lần phẫu thuật của bệnh nhân
+		Input: ID bệnh nhân
+		Output: Thông tin tất cả các field trong bảng 26 có liên quan đến bệnh nhân
+	Dụng cụ phẫu thuật
+		Input: ID bệnh nhân
+		Output: Thông tin tất cả các field trong bảng 27
+	Thông tin bác sỹ
+		Input: ID bác sỹ
+		Output: Thông tin tất cả các field liên quan đến bác sỹ (bảng 1, 2, 3)	
