@@ -1,0 +1,59 @@
+
+
+
+
+create or replace PROCEDURE TINH_TIEN_DOT_KHAM( mMA_BENH_NHAN IN VARCHAR2,mMA_DOT_DIEU_TRI IN VARCHAR2 , mTONG_TIEN OUT INT)
+IS 
+mTIEN_THUOC INT;
+mTIEN_GIUONG INT;
+mLOAI_BN INT;
+mHOURS INT;
+mDAY INT;
+mSTART TIMESTAMP;
+mEND TIMESTAMP;
+mGIA INT;
+mSTT INT;
+BEGIN
+    SELECT LOAI_BN
+    INTO mLOAI_BN
+    FROM BENH_NHAN
+    WHERE MA_BN = mMA_BENH_NHAN;
+    IF(mLOAI_BN = 1) THEN
+        SELECT SUM(J.SO_LUONG*W.DON_GIA)
+        INTO mTIEN_THUOC
+        FROM KE_THUOC_NOI_TRU J , THUOC W
+        WHERE J.MA_DOT = mMA_DOT_DIEU_TRI AND J.MA_BN = mMA_BENH_NHAN AND J.MA_THUOC = W.MA_THUOC;
+
+        SELECT BAT_DAU
+        INTO mSTART
+        FROM DOT_DIEU_TRI
+        WHERE MA_BN = mMA_BENH_NHAN AND MA_DOT = mMA_DOT_DIEU_TRI;
+
+        SELECT KET_THUC
+        INTO mEND
+        FROM DOT_DIEU_TRI
+        WHERE MA_BN = mMA_BENH_NHAN AND MA_DOT = mMA_DOT_DIEU_TRI;
+
+        mHOURS := abs(24*extract(day from (to_timestamp(  mSTART, 'dd-mon-yyyy hh:mi:ssxff PM tzh:tzm') -
+              to_timestamp(   mEND , 'dd-mon-yyyy hh:mi:ssxff PM :tzm')))+extract(hour from (to_timestamp(  mSTART, 'dd-mon-yyyy hh:mi:ssxff PM tzh:tzm') -
+              to_timestamp(   mEND , 'dd-mon-yyyy hh:mi:ssxff PM :tzm'))));
+
+
+         mDAY := ROUND(mHOURS/24)+1;
+
+         SELECT MUC_GIA
+         INTO mGIA
+         FROM GIUONG J, PHONG_NGHI_BN W
+         WHERE J.MA_BN_DANG_NAM = mMA_BENH_NHAN AND J.MA_PHONG = W.MA_PHONG AND J.MA_KHU = W.MA_KHU;
+
+         mTIEN_GIUONG := mGIA*mDAY;
+         mTONG_TIEN := mTIEN_GIUONG + mTIEN_THUOC;
+        ELSE
+         SELECT MAX(SO_TT) INTO mSTT FROM KE_THUOC_NGOAI_TRU WHERE MA_BN = mMA_BENH_NHAN;
+         SELECT SUM(W.SO_LUONG*J.DON_GIA)
+         INTO mTONG_TIEN
+         FROM ( SELECT  MA_THUOC, SO_LUONG FROM KE_THUOC_NGOAI_TRU WHERE MA_BN = mMA_BENH_NHAN AND SO_TT = mSTT) W , THUOC J
+         WHERE W.MA_THUOC = J.MA_THUOC;
+         
+    END IF;
+END;
