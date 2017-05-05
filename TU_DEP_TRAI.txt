@@ -1,0 +1,25 @@
+create or replace FUNCTION TU_DEP_TRAI
+  RETURN SYS_REFCURSOR
+IS
+  l_rc SYS_REFCURSOR;
+BEGIN
+
+
+  OPEN l_rc
+  FOR  SELECT (NVL(mO.qSUM,0)+NVL(mO.kSUM,0) + NVL(mO.mSUM,0)) tSUM , mU.MA_BAC_SI
+       FROM BAC_SI mU RIGHT JOIN (SELECT MAX(qSUM) qSUM ,MAX(kSUM) kSUM , MAX(mSUM) mSUM , mW.MA_BAC_SI
+                  FROM  (SELECT COUNT(*) qSUM, mF.MA_BAC_SI FROM BS_TIEN_HANH_PT mD, BAC_SI mF WHERE mD.MA_BS =mF.MA_BAC_SI GROUP BY mF.MA_BAC_SI) mW  LEFT JOIN ( SELECT  MAX(kSUM) kSUM , MAX(mSUM) mSUM , MA_BAC_SI 
+                         FROM (SELECT COUNT(*) kSUM,mC.MA_BS FROM LAN_KHAM_BENH mC, BAC_SI mJ WHERE  mC.MA_BS = mJ.MA_BAC_SI GROUP BY mC.MA_BS) mN LEFT JOIN (SELECT BAC_SI.MA_BAC_SI , mSUM
+                               FROM BAC_SI LEFT JOIN (SELECT COUNT(*) mSUM , MA_BAC_SI
+                                                      FROM BAC_SI mA , DOT_DIEU_TRI mB 
+                                                      WHERE mA.MA_BAC_SI = mB.MA_BS
+                                                      GROUP BY MA_BAC_SI) J
+                                                      ON BAC_SI.MA_BAC_SI= J.MA_BAC_SI) mA
+                               ON  mA.MA_BAC_SI = mN.MA_BS 
+                               GROUP BY MA_BAC_SI) mE
+                         ON    mW.MA_BAC_SI=mE.MA_BAC_SI
+                         GROUP BY  mW.MA_BAC_SI) mO
+       ON  mU.MA_BAC_SI = mO.MA_BAC_SI
+       ORDER BY tSUM  DESC ; 
+  RETURN l_rc;
+END;
